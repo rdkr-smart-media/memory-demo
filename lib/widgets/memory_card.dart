@@ -40,7 +40,7 @@ class _MemoryCardState extends State<MemoryCard> {
           duration: const Duration(milliseconds: 200),
           switchInCurve: Curves.easeIn,
           switchOutCurve: Curves.easeOut,
-          child: widget.isFlipped || widget.isMatched ? _buildMotive() : _buildMotive(),
+          child: widget.isFlipped || widget.isMatched ? _buildMotive() : _buildCover(),
         ),
       ),
     );
