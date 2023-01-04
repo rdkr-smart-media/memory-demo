@@ -67,6 +67,7 @@ class _MemoryDemoState extends State<MemoryDemo> {
   /// timer for flipping cards back
   /// if they are not a match
   Timer? _timer;
+  bool _timerRunning = false;
 
   @override
   void initState() {
@@ -158,12 +159,16 @@ class _MemoryDemoState extends State<MemoryDemo> {
     });
 
     if (_flippedCards.length == 2) {
-      _timer = Timer(const Duration(seconds: 1), () {
-        setState(() {
-          _flippedCards.clear();
-          tries++;
+      if (!_timerRunning) {
+        _timerRunning = true;
+        _timer = Timer(const Duration(seconds: 1), () {
+          _timerRunning = false;
+          setState(() {
+            _flippedCards.clear();
+            tries++;
+          });
         });
-      });
+      }
     }
   }
 }
